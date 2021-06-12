@@ -7,7 +7,6 @@ const editor = grapesjs.init({
     panels: {defaults: []},
     blockManager: {
         appendTo: '#blocks',
-        blocks: []
     },
     layerManager: {
         appendTo: '.layers-container'
