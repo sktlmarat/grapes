@@ -1,3 +1,6 @@
+*{
+    font-family: 'Overpass', sans-serif;
+}
 .my-btn{
     height: 50px;
     background: aqua;

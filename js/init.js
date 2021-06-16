@@ -1,7 +1,7 @@
 const editor = grapesjs.init({
     container: '#gjs',
     fromElement: true,
-    height: '700px',
+    height: '400px',
     width: 'auto',
     storageManager: false,
     panels: {defaults: []},
@@ -106,106 +106,77 @@ editor.Commands.add('show-styles', {
         smEl.style.display = 'none';
     },
 });
-editor.BlockManager.add('my-block-id', {
-    id: 'box',
-    label: 'Box',
-    content: {
-        tagName: 'div',
-        draggable: true,
-        style: {
-            width: '100%',
-            display: 'flex',
-            'align-content': 'center',
-            height: 'auto',
-        },
-        attributes: {class: 'my-box'},
-        components: [
-            {
-                tagName: 'div',
-                style: {
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex !important',
-                    'align-items': 'center',
-                    'justify-content': 'center',
-                },
-                components: [
-                    {
-                        tagName: 'img',
-                        resizable: true,
-                        style: {
-                          display: 'block'
-                        },
-                        attributes: { src: 'http://www.mandysam.com/img/random.jpg'}
-                    },
-                    {
-                        tagName: 'p',
-                        style: {
-                            display: 'block'
-                        },
-                        type: 'text',
-                        content: 'Sample text'
-                    },
-                    {
-                        type: 'text',
-                        tagName: 'button',
-                        style: {
-                            display: 'block'
-                        },
-                        editable: true,
-                        resizable: true,
-                        content: 'Check it out'
-                    },
-                    ]
+
+
+editor.Components.addType('custom-btn', {
+    model: {
+        defaults: {
+            tagName: 'div',
+            style: {
+                display: 'flex'
             },
-        ]
+            layerable: false,
+            selectable: false,
+            editable: false,
+            components: [
+                {
+                    tagName: 'button',
+                    type: 'text',
+
+                    style: {
+                        background: 'rgba(5, 202, 182, 1)',
+                        'font-size': '15px; color: white',
+                        padding: '14px 42px 14px 42px',
+                        border: '2px solid rgba(5, 202, 182, 0)',
+                        'font-family': "'Overpass', sans-serif",
+                    },
+                    content: 'BUTTON ->'
+                }
+            ]
+        },
+        init () {
+            this.on('change:style', this.changeStyles)
+        },
+        changeStyles () {
+            this.get('components').each(child => console.log(child))
+            changestyle
+        }
     }
 })
-editor.BlockManager.add('my-img', {
-    id: 'my-img',
-    label: 'Image',
+
+
+
+editor.BlockManager.add('button2', {
+    id: 'button2',
+    name: 'button2',
+    label: 'Button2',
     content: {
         tagName: 'div',
-        draggable: true,
         style: {
-            width: '100%',
-            display: 'flex',
-            'align-content': 'center',
-            height: 'auto',
+            display: 'flex'
         },
+        name: 'Button',
         components: [
             {
-                tagName: 'img',
-                attributes: { src: 'http://www.mandysam.com/img/random.jpg' }
-            },
-        ]
-    }
-})
-editor.BlockManager.add('my-btn', {
-    id: 'my-btn',
-    label: 'Button',
-    content: {
-        tagName: 'div',
-        draggable: true,
-        style: {
-            width: '100%',
-            display: 'flex',
-            'align-content': 'center',
-            height: 'auto',
-        },
-        components: [
-            {
-                name: 'Button',
                 tagName: 'button',
-                style: {
-                    background: 'aqua',
-                    height: '50px',
-                    width: '30%',
-                },
                 type: 'text',
+                hoverable: false,
+                selectable: false,
+                draggable: false,
+                layerable: false,
                 editable: true,
-                content: 'Sample button'
-            },
+                style: {
+                    background: 'rgba(5, 202, 182, 1)',
+                    'font-size': '15px; color: white',
+                    padding: '14px 42px 14px 42px',
+                    border: '2px solid rgba(5, 202, 182, 0)',
+                    'font-family': "'Overpass', sans-serif",
+                },
+                content: 'BUTTON ->'
+            }
         ]
     }
 })
+
+
+
