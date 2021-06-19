@@ -1,5 +1,16 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;700&display=swap');
+body{
     font-family: 'Overpass', sans-serif;
+}
+.buttoned{
+    background: rgba(5, 202, 182, 1);
+    font-size: 15px;
+    color: white;
+    padding: 14px 42px 14px 42px;
+    border: 2px solid rgba(5, 202, 182, 0);
+    font-family: 'Overpass', sans-serif;
+    font-weight: 700;
+    line-height: 1.6;
 }
 .my-btn{
     height: 50px;

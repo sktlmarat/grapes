@@ -3,6 +3,10 @@ const editor = grapesjs.init({
     fromElement: true,
     height: '400px',
     width: 'auto',
+    canvas: {
+        styles: ['https://fonts.googleapis.com/css2?family=Overpass:wght@100;300;400;500;700&display=swap',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css']
+    },
     storageManager: false,
     panels: {defaults: []},
     blockManager: {
@@ -11,6 +15,7 @@ const editor = grapesjs.init({
     layerManager: {
         appendTo: '.layers-container'
     },
+    cssIcons: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css',
     // We define a default panel as a sidebar to contain layers
     panels: {
         defaults: [
@@ -108,75 +113,144 @@ editor.Commands.add('show-styles', {
 });
 
 
-editor.Components.addType('custom-btn', {
-    model: {
-        defaults: {
-            tagName: 'div',
-            style: {
-                display: 'flex'
-            },
-            layerable: false,
-            selectable: false,
-            editable: false,
-            components: [
-                {
-                    tagName: 'button',
-                    type: 'text',
-
-                    style: {
-                        background: 'rgba(5, 202, 182, 1)',
-                        'font-size': '15px; color: white',
-                        padding: '14px 42px 14px 42px',
-                        border: '2px solid rgba(5, 202, 182, 0)',
-                        'font-family': "'Overpass', sans-serif",
-                    },
-                    content: 'BUTTON ->'
-                }
-            ]
-        },
-        init () {
-            this.on('change:style', this.changeStyles)
-        },
-        changeStyles () {
-            this.get('components').each(child => console.log(child))
-            changestyle
-        }
-    }
-})
-
-
-
-editor.BlockManager.add('button2', {
-    id: 'button2',
-    name: 'button2',
-    label: 'Button2',
+editor.BlockManager.add('button', {
+    id: 'button',
+    name: 'button',
+    label: 'Button',
     content: {
         tagName: 'div',
         style: {
-            display: 'flex'
+            display: 'flex',
+            'justify-content': 'center',
+            'font-family': "'Overpass', sans-serif !important",
+            'padding': '5px 0'
         },
         name: 'Button',
         components: [
             {
                 tagName: 'button',
                 type: 'text',
-                hoverable: false,
-                selectable: false,
+                hoverable: true,
+                selectable: true,
                 draggable: false,
                 layerable: false,
                 editable: true,
                 style: {
                     background: 'rgba(5, 202, 182, 1)',
-                    'font-size': '15px; color: white',
+                    'font-size': '15px',
+                    color: 'white',
                     padding: '14px 42px 14px 42px',
                     border: '2px solid rgba(5, 202, 182, 0)',
-                    'font-family': "'Overpass', sans-serif",
+                    'font-weight': '700',
+                    'line-height': '1.6',
+                    'cursor': 'pointer',
+                    'border-radius': '2px',
+                    'font-family': 'Overpass, sans-serif'
                 },
-                content: 'BUTTON ->'
+                content: 'BUTTON'
             }
         ]
     }
 })
+
+editor.BlockManager.add('text', {
+    id: 'text',
+    name: 'text',
+    label: 'Text',
+    content: {
+        tagName: 'div',
+        style: {
+        },
+        name: 'Text',
+        components: [
+            {
+                tagName: 'p',
+                type: 'text',
+                hoverable: true,
+                selectable: true,
+                draggable: false,
+                layerable: false,
+                editable: true,
+                style: {
+                    color: '#666666',
+                    'font-size': '16px',
+                    'text-align': 'center',
+                    'font-family': 'Overpass, sanf-serif'
+                },
+                content: 'The point of using dummy text for your paragraph is that it has a more-or-less normal distribution of letters. making it look like readable English.'
+            }
+        ]
+    }
+})
+
+editor.BlockManager.add('spacer', {
+    id: 'spacer',
+    name: 'spacer',
+    label: 'Spacer  ',
+    content: {
+        tagName: 'div',
+        name: 'Icon',
+        style: {
+          display: 'flex',
+          'justify-content': 'center',
+            height: 'auto',
+            padding: '5px 0'
+        },
+        components: [
+            {
+                tagName: 'i',
+                attributes: { class: 'fas fa-star' },
+                hoverable: true,
+                selectable: true,
+                draggable: false,
+                layerable: false,
+                editable: true,
+                style: {
+                    color: 'rgba(5, 202, 182, 1)',
+                    'font-size': '50px',
+                    'text-align': 'center',
+                    'height': 'auto'
+                },
+                content: ''
+            }
+        ]
+    }
+})
+
+editor.BlockManager.add('icon', {
+    id: 'icon',
+    name: 'icon',
+    label: 'Icon',
+    content: {
+        tagName: 'div',
+        name: 'Icon',
+        style: {
+            display: 'flex',
+            'justify-content': 'center',
+            height: 'auto',
+            padding: '5px 0'
+        },
+        components: [
+            {
+                tagName: 'i',
+                attributes: { class: 'fas fa-star' },
+                hoverable: true,
+                selectable: true,
+                draggable: false,
+                layerable: false,
+                editable: true,
+                style: {
+                    color: 'rgba(5, 202, 182, 1)',
+                    'font-size': '50px',
+                    'text-align': 'center',
+                    'height': 'auto'
+                },
+                content: ''
+            }
+        ]
+    }
+})
+
 
 
 
